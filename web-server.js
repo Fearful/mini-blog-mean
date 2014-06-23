@@ -38,17 +38,17 @@ db.once('open', function() {
         text:  { type: String }
     });
     // Mongoose also creates a MongoDB collection called 'Posts' for these documents.
-    var singlePost = mongoose.model('singlePost', postSchema);
+    var posts = mongoose.model('singlePost', postSchema);
     
     // examples ____________________________________________________________________________________________ 
     
-    var post_example1 = new singlePost({
+    var post_example1 = new posts({
         id: 1,
         title: 'Recruiting Advice No One Tells You',
         text:  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam consectetur venenatis blandit. Praesent vehicula, libero non pretium vulputate, lacus arcu facilisis                lectus, sed feugiat tellus nulla eu dolor. Nulla porta bibendum lectus quis euismod. Aliquam volutpat ultricies porttitor. Cras risus nisi, accumsan vel cursus ut,                    sollicitudin vitae dolor. Fusce scelerisque eleifend lectus in bibendum. Suspendisse lacinia egestas felis a volutpat.'
     });
 
-    var post_example2 = new singlePost({
+    var post_example2 = new posts({
         id: 2,
         title: 'How to start writing and get closer to your goals',
         text:  'You have been thinking about starting a blog or writing a novel for a long time. You want to write but you just never do it. The best time was 5 years ago; the second                 best time is now. So, what keeps you away from your goals?'
@@ -63,7 +63,7 @@ db.once('open', function() {
     
     // get all posts
     app.get('/api/myPosts', function(req, res){
-        singlePost.find(function(err, myPosts) {
+        posts.find(function(err, myPosts) {
             if (err) return console.error(err);
             res.send (myPosts);
         });
@@ -71,7 +71,7 @@ db.once('open', function() {
         
     //get a particular post by ID
     app.get('/api/myPosts/:id', function(req, res){
-        singlePost.findOne({ id: req.params.id }, function(err, selPost) {
+        posts.findOne({ id: req.params.id }, function(err, selPost) {
             if (err) return console.error(err);
             res.send (selPost);
             });
@@ -79,7 +79,7 @@ db.once('open', function() {
     
     // create a new post
     app.put('/newPost', function(req, res) { 
-        var newPost = new singlePost({
+        var newPost = new posts({
             id: ++contID,
             title : req.body.title,
             text : req.body.text
@@ -90,7 +90,7 @@ db.once('open', function() {
     
     // update a created post
     app.post('/editPost', function(req, res) {
-        singlePost.findOne({ id: req.body.id }, function (err, selPost){
+        posts.findOne({ id: req.body.id }, function (err, selPost){
             selPost.title = req.body.title;
             selPost.text = req.body.text;
             selPost.save();
@@ -100,7 +100,7 @@ db.once('open', function() {
 
     // delete a particular post
     app.delete('/delete/:id', function(req, res) {
-        singlePost.remove({ id: req.params.id }, function (err) {
+        posts.remove({ id: req.params.id }, function (err) {
             if (err) return handleError(err);
             // removed!
             res.json(true);   
