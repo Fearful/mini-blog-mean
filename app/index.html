@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css"/>
   <link rel="stylesheet" href="css/toaster.css"/>
 </head>
-<body>
+<body class="height100">
     <!-- navigation bar --> 
     <nav class="navbar navbar-default navbar-inverse" role="navigation"> <!--definir un controller, agregar navigationController.js     $location.path("/post/1")-->
         <div class="navbar-header">
@@ -33,22 +33,20 @@
                 <button type="submit" class="btn btn-primary">Sign in</button>
             </form><!-- login form -->
         </div>
-    </nav><!-- navigation bar --> 
-     
+    </nav><!-- navigation bar -->
+    <div class="height100 BG">
+        <img src="img/bg-home.jpg" class="imgBG">
+        <div class="bottomImg">Ver todos los posts</div>
+    </div>
     <!-- container -->
-    <div class="row">
-        <!-- left side -->
-        <div class="col-xs-6 col-md-4 left-side">
-            <toaster-container toaster-options="{'position-class': 'toast-bottom-left', 'time-out': 3000}"></toaster-container>
+    <div class="centerContent">
+    <!-- left side -->
+        <div class="col-xs-6 col-md-4">
+        <toaster-container toaster-options="{'position-class': 'toast-bottom-left', 'time-out': 3000}"></toaster-container>
         </div>    
         <!-- right side -->
-        <div class="col-xs-12 col-md-8 right-side">
             <!-- ng-view, HTML is injected dinamically -->
                 <div ng-view></div>
-        </div>    
-        <!-- bottom side -->
-        <div class="bottom-side">
-        </div>
     </div> <!-- container -->
     
     <!-- scripts -->
@@ -67,7 +65,5 @@
     <script src="js/controllers/postDetailsCtrl.js"></script>
     <script src="js/controllers/newPostCtrl.js"></script>
     <script src="js/controllers/editPostCtrl.js"></script>
-    
-    
 </body>
 </html>
