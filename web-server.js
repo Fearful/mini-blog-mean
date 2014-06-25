@@ -78,7 +78,7 @@ db.once('open', function() {
     });
     
     // create a new post
-    app.put('/newPost', function(req, res) { 
+    app.post('/newPost', function(req, res) {
         var newPost = new posts({
             id: ++contID,
             title : req.body.title,
@@ -89,7 +89,7 @@ db.once('open', function() {
     });
     
     // update a created post
-    app.post('/editPost', function(req, res) {
+    app.put('/editPost', function(req, res) {
         posts.findOne({ id: req.body.id }, function (err, selPost){
             selPost.title = req.body.title;
             selPost.text = req.body.text;
