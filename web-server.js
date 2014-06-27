@@ -96,7 +96,7 @@ db.once('open', function() {
             selPost.save();
         });
         res.json(true);
-    }); 
+    });
 
     // delete a particular post
     app.delete('/delete/:id', function(req, res) {
