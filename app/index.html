@@ -2,7 +2,7 @@
 <html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
-  <title>My AngularJS App</title>
+  <title>mini-blog-mean</title>
   <link rel="stylesheet" href="css/myCSS.css"/>
   <link rel="stylesheet" href="css/bootstrap-theme.css"/>
   <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
@@ -12,16 +12,15 @@
 </head>
 <body class="height100">
     <!-- navigation bar --> 
-    <nav class="navbar navbar-default navbar-inverse" role="navigation"> <!--definir un controller, agregar navigationController.js     $location.path("/post/1")-->
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">demoBlog</a>
+            <a class="navbar-brand" href="#">mini-blog-mean</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="navCtrl">
             <ul class="nav navbar-nav menu">
                 <li ng-class="{active: isPostSelected}"><a href="#/posts" ng-click="markPostSelected()">My Posts</a></li>
                 <a href="#/addpost" type="button" class="btn btn-primary btn-Post" ng-click="unmarkAll()"> Write new post </a>    
-            </ul>
-            
+            </ul>            
             <!-- login form -->
             <form class="navbar-form navbar-right">
                 <div class="form-group">
@@ -36,7 +35,7 @@
     </nav><!-- navigation bar -->
     <div class="height100 BG">
         <img src="img/bg-home.jpg" class="imgBG">
-        <div id="allPosts" class="bottomImg">Ver todos los posts</div>
+        <div id="allPosts" class="bottomImg">My posts</div>
     </div>
     <!-- container -->
     <div id="centerContent" class="centerContent">
